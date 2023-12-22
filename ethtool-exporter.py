@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Collect ethtool metrics,publish them via http or save them to a file."""
 import re
 from argparse import ArgumentParser, Namespace
@@ -198,11 +197,11 @@ class EthtoolCollector:
         :param parsed_arguments: Parsed arguments using the argument parser.
         """
         if parsed_arguments.oneshot and not parsed_arguments.textfile_name:
-            self.logger.error("Oneshot has to be used with textfile mode")
+            print("Oneshot has to be used with textfile mode")
             parser.print_help()
             exit(1)
         if parsed_arguments.interval and not parsed_arguments.textfile_name:
-            self.logger.error("Interval has to be used with textfile mode")
+            print("Interval has to be used with textfile mode")
             parser.print_help()
             exit(1)
         if (
@@ -210,7 +209,7 @@ class EthtoolCollector:
             and not parsed_arguments.port
             and not parsed_arguments.textfile_name
         ):
-            self.logger.error("Listen address has to be used with a listen port")
+            print("Listen address has to be used with a listen port")
             parser.print_help()
             exit(1)
 
